@@ -1,3 +1,6 @@
+#ifndef SYPHON_H_4C3DD1ED_2002_41B4_8BDA_31B05C8E3CE5
+#define SYPHON_H_4C3DD1ED_2002_41B4_8BDA_31B05C8E3CE5
+
 /*
     Syphon.h
     Syphon
@@ -40,3 +43,5 @@
 #import <Syphon/SyphonServer.h>
 #import <Syphon/SyphonClient.h>
 #import <Syphon/SyphonImage.h>
+
+#endif
