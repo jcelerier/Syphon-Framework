@@ -130,6 +130,7 @@ target_compile_definitions(Syphon
 target_link_libraries(Syphon
   PRIVATE
     "-framework OpenGL"
+    "-framework Metal"
     "-framework Cocoa"
     "-framework IOSurface"
 )
