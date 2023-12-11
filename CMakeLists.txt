@@ -31,77 +31,77 @@ foreach(header ${SYPHON_PUBLIC_HEADERS})
 endforeach()
 
 add_library(Syphon
-  Syphon.h
-  SyphonBuildMacros.h
-  SyphonCFMessageReceiver.h
-  SyphonCFMessageReceiver.m
-  SyphonCFMessageSender.h
-  SyphonCFMessageSender.m
-  SyphonCGL.c
-  SyphonCGL.h
-
-  SyphonClient.h
-  SyphonClient.m
-  SyphonClientBase.h
-  SyphonClientBase.m
-  SyphonClientConnectionManager.h
-  SyphonClientConnectionManager.m
-  SyphonOpenGLClient.h
-  SyphonOpenGLClient.m
-
-  SyphonDispatch.c
-  SyphonDispatch.h
-  SyphonIOSurfaceImageCore.h
-  SyphonIOSurfaceImageCore.m
-  SyphonIOSurfaceImageLegacy.h
-  SyphonIOSurfaceImageLegacy.m
-  SyphonImage.h
-  SyphonImage.m
-  SyphonImageBase.h
-  SyphonImageBase.m
-  SyphonMachMessageReceiver.h
-  SyphonMachMessageReceiver.m
-  SyphonMachMessageSender.h
-  SyphonMachMessageSender.m
-  SyphonMessageQueue.h
-  SyphonMessageQueue.m
-  SyphonMessageReceiver.h
-  SyphonMessageReceiver.m
-  SyphonMessageSender.h
-  SyphonMessageSender.m
-  SyphonMessaging.h
-  SyphonMessaging.m
-  SyphonOpenGLFunctions.c
-  SyphonOpenGLFunctions.h
-  SyphonOpenGLImage.h
-  SyphonOpenGLImage.m
-  SyphonOpenGLServer.h
-  SyphonOpenGLServer.m
-  SyphonPrivate.h
-  SyphonPrivate.m
-  SyphonServer.h
-  SyphonServer.m
-  SyphonServerBase.h
-  SyphonServerBase.m
-  SyphonServerConnectionManager.h
-  SyphonServerConnectionManager.m
-  SyphonServerDirectory.h
-  SyphonServerDirectory.m
-  SyphonServerRenderer.h
-  SyphonServerRenderer.m
-  SyphonServerRendererCore.h
-  SyphonServerRendererCore.m
-  SyphonServerRendererLegacy.h
-  SyphonServerRendererLegacy.m
-  SyphonServerShader.h
-  SyphonServerShader.m
-  SyphonServerVertices.h
-  SyphonServerVertices.m
-  SyphonShader.h
-  SyphonShader.m
-  SyphonSubclassing.h
-  SyphonVertices.h
-  SyphonVertices.m
+    Syphon.h
+    SyphonCFMessageReceiver.h
+    SyphonCFMessageReceiver.m
+    SyphonCFMessageSender.h
+    SyphonCFMessageSender.m
+    SyphonCGL.c
+    SyphonCGL.h
+    SyphonClient.h
+    SyphonClient.m
+    SyphonClientBase.h
+    SyphonClientBase.m
+    SyphonClientConnectionManager.h
+    SyphonClientConnectionManager.m
+    SyphonDispatch.c
+    SyphonDispatch.h
+    SyphonGLShader.h
+    SyphonGLShader.m
+    SyphonGLVertices.h
+    SyphonGLVertices.m
+    SyphonIOSurfaceImageCore.h
+    SyphonIOSurfaceImageCore.m
+    SyphonIOSurfaceImageLegacy.h
+    SyphonIOSurfaceImageLegacy.m
+    SyphonImage.h
+    SyphonImage.m
+    SyphonImageBase.h
+    SyphonImageBase.m
+    SyphonMessageQueue.h
+    SyphonMessageQueue.m
+    SyphonMessageReceiver.h
+    SyphonMessageReceiver.m
+    SyphonMessageSender.h
+    SyphonMessageSender.m
+    SyphonMessaging.h
+    SyphonMessaging.m
+    SyphonMetalClient.h
+    SyphonMetalClient.m
+    SyphonMetalServer.h
+    SyphonMetalServer.m
+    SyphonOpenGLClient.h
+    SyphonOpenGLClient.m
+    SyphonOpenGLFunctions.c
+    SyphonOpenGLFunctions.h
+    SyphonOpenGLImage.h
+    SyphonOpenGLImage.m
+    SyphonOpenGLServer.h
+    SyphonOpenGLServer.m
+    SyphonPrivate.h
+    SyphonPrivate.m
+    SyphonServer.h
+    SyphonServer.m
+    SyphonServerBase.h
+    SyphonServerBase.m
+    SyphonServerConnectionManager.h
+    SyphonServerConnectionManager.m
+    SyphonServerDirectory.h
+    SyphonServerDirectory.m
+    SyphonServerGLShader.h
+    SyphonServerGLShader.m
+    SyphonServerGLVertices.h
+    SyphonServerGLVertices.m
+    SyphonServerMetalTypes.h
+    SyphonServerRendererCoreGL.h
+    SyphonServerRendererCoreGL.m
+    SyphonServerRendererGL.h
+    SyphonServerRendererGL.m
+    SyphonServerRendererLegacyGL.h
+    SyphonServerRendererLegacyGL.m
+    SyphonServerRendererMetal.h
+    SyphonServerRendererMetal.m
+    SyphonSubclassing.h
 )
 
 target_precompile_headers(Syphon
@@ -114,9 +114,17 @@ target_include_directories(Syphon
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
 )
 
+target_compile_options(Syphon
+  PRIVATE
+    -fobjc-arc
+    -fobjc-arc-exceptions
+    -fobjc-weak
+)
+
 target_compile_definitions(Syphon
   PRIVATE
     SYPHON_CORE_SHARE
+    GL_SILENCE_DEPRECATION=1
 )
 
 target_link_libraries(Syphon

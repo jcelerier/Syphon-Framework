@@ -421,7 +421,7 @@
     glTexCoordPointer(2, GL_FLOAT, 0, tex_coords );
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(2, GL_FLOAT, 0, verts );
-    glDrawArrays( GL_TRIANGLE_FAN, 0, 4 );
+    glDrawArrays( GL_TRIANGLE_STRIP, 0, 4 );
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementArrayBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, arrayBuffer);
