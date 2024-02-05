@@ -104,10 +104,6 @@ add_library(Syphon
     SyphonSubclassing.h
 )
 
-target_precompile_headers(Syphon
-  PUBLIC
-    Syphon_Prefix.pch
-)
 
 target_include_directories(Syphon
   PUBLIC
@@ -116,9 +112,10 @@ target_include_directories(Syphon
 
 target_compile_options(Syphon
   PRIVATE
-    -fobjc-arc
-    -fobjc-arc-exceptions
-    -fobjc-weak
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-arc>
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-arc-exceptions>
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-weak>
+    -include Syphon_Prefix.pch
 )
 
 target_compile_definitions(Syphon
