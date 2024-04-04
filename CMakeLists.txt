@@ -131,3 +131,7 @@ target_link_libraries(Syphon
     "-framework Cocoa"
     "-framework IOSurface"
 )
+
+set_target_properties(Syphon PROPERTIES
+    UNITY_BUILD OFF
+)
